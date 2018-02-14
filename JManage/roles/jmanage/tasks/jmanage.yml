@@ -100,9 +100,19 @@
   service:
     name: jmanage
     enabled: yes
+  ignore_errors: yes
+
+- name: Check the status of the JManage
+  command: service jmanage status
+  register: js
+  ignore_errors: yes
+- debug: var=js.stdout_lines
 
 - name: Start Jmanage
-  service: 
-      name: jmanage
-      state: started
-  remote_user: "{{ jmanage_user }}"
+  command: service jmanage start
+
+- name: Check the status of the JManage
+  command: service jmanage status
+  register: js
+  ignore_errors: yes
+- debug: var=js.stdout_lines
