@@ -1,0 +1,45 @@
+#!/bin/bash
+# description: init script tojmanage
+#export JRE_HOME=/usr/java/jdk1.8.0_161/jre                                                                                                                          
+#export PATH=$PATH:$JRE_HOME/bin                                                                                                                                     
+#export JAVA_HOME=/usr/java/jdk1.8.0_161                                                                                                                             
+#export JAVA_PATH=$JAVA_HOME                                                                                                                                        
+#export PATH=$PATH:$JAVA_HOME/bin
+
+JMANAGEBIN="/opt/Jmanage-2.0-RC1/bin/jmanage"
+
+start()
+{
+	$JMANAGEBIN start;
+}
+stop()
+{
+	$JMANAGEBIN stop
+}
+restart()
+{
+	$JMANAGEBIN restart
+}
+status()
+{
+	$JMANAGEBIN status
+}
+
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  restart)
+	restart
+	;;
+  status)
+	status
+	;;
+  *)
+	echo $"Usage: $0 {start|stop|restart|status}"
+	;;
+esac
+exit 1
