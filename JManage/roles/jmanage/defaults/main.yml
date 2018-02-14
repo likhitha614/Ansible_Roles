@@ -14,6 +14,7 @@ jmanageService_src: http://jexcellente.googlepages.com/jmanage-service.zip
 
 jmanage_home: /opt/Jmanage-2.0-RC1
 jmanage_user: jmanage
+jmanage_pass: jmanage
 jmanageService: /opt/JmanageService
 profile: /etc/profile.d
 
