@@ -14,6 +14,7 @@
     name: "{{ jmanage_user }}"
     comment: Jmanage User
     home: "{{ jmanage_home }}"
+    password: "{{ jmanage_pass | password_hash('sha512') }}"
 
 - name: Set JAVA_HOME
   template:
@@ -94,6 +95,11 @@
     owner: "{{ jmanage_user }}"
     group: "{{ jmanage_user }}"
     state: file
+    
+- name: Enable Jmanage Service at Boot time. 
+  service:
+    name: jmanage
+    enabled: yes
 
 - name: Start Jmanage
   service: 
