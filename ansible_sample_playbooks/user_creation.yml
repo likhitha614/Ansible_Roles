@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+
+  vars_prompt:
+  - name: "username"
+    prompt: "Please enter Username:"
+    private: no
+
+  - name: "shell"
+    prompt: "Please enter shell"
+    private: no
+
+  - name: "password"
+    prompt: "Please enter password"
+    private: yes 
+
+  tasks: 
+  - name: Create user formac
+    user:
+       name: "{{ username }}"
+       shell: "{{ shell }}"
+       password: "{{ password | password_hash('sha512') }}"
+

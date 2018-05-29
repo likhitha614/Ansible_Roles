@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks: 
+  - name: Install Packages
+    yum: 
+       name: "{{ item }}"
+       state: latest
+    with_items:
+      - "epel-release"
+      - "git"
+      - "vim"
+
+  - name: Install Packages
+    yum: 
+       name: "{{ item }}"
+       state: latest
+    with_items:
+      - "httpd"
+      - "nginx"
+  
